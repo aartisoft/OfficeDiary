@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:background="@drawable/teabackg"
+    tools:context=".AddvenderFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/cardview"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textinput1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                app:hintTextAppearance="@style/AppTheme.TextFloatLabelAppearance2">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorblack"
+                    android:hint="@string/vendorname"
+                    android:inputType="textPersonName"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textinput2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textview"
+                android:layout_below="@+id/textinput1"
+                android:layout_marginTop="15dp"
+                app:hintTextAppearance="@style/AppTheme.TextFloatLabelAppearance2">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textnumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:textColor="@color/colorblack"
+                    android:hint="@string/mobileno"
+                    android:inputType="number" />
+            </android.support.design.widget.TextInputLayout>
+
+           <!-- <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textview"
+                android:layout_below="@+id/textinput2"
+                android:layout_marginTop="15dp"
+                android:text="Utility Items"
+                android:textColor="@color/colorwhit"
+                android:textSize="20dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textinput3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textview"
+                android:layout_below="@+id/textView5"
+                android:layout_marginTop="5dp"
+                app:hintTextAppearance="@style/AppTheme.TextFloatLabelAppearance2">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textutname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Utility Item Name"
+                    android:textColor="@color/colorwhit" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/textinpu4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textview"
+                android:layout_below="@+id/textinput3"
+                android:layout_marginTop="15dp"
+                app:hintTextAppearance="@style/AppTheme.TextFloatLabelAppearance2">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/textutrate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Rate"
+                    android:textColor="@color/colorwhit" />
+            </android.support.design.widget.TextInputLayout>-->
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cardview"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="2dp"
+        android:background="@color/colorblack"
+        app:cardBackgroundColor="@color/colorcardback"
+        app:cardCornerRadius="19dp"
+        app:cardElevation="6dp">
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:text="@string/vender_button"
+            android:textAlignment="center"
+            android:textColor="@color/colorwhit"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

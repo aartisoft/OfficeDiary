@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Office Diary</string>
+    <string name="title_activity_navigation">NavigationActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">RPRS Technology</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Adding Vendor</string>
+    <string name="fragment_adduti">Adding Utility</string>
+    <string name="fragment_deluti">Edit Utility</string>
+    <string name="fragment_entry">Daily Entries</string>
+    <string name="fragment_delven">Edit Vendor</string>
+    <string name="fragment_addven">Add Vendor</string>
+    <string name="fragment_entries">Entry Details</string>
+
+    <string name="fragment_aboutus">About Us</string>
+    <string name="fragment_contsctus">Contact Us</string>
+
+    <string name="title_activity_drawer">DrawerActivity</string>
+
+    <!--Button names-->
+    <string name="vender_button">Add Entry</string>
+    <string name="timemanu_button">Manual Time</string>
+    <string name="title_activity_user">UserActivity</string>
+    <string name="login">Login</string>
+    <string name="logout">Logout</string>
+    <string name="signupadmn">Sign_Up as admin</string>
+    <string name="signup">Sign_Up</string>
+    <string name="signupuser">Sign_Up as user</string>
+    <string name="register">Register</string>
+    <string name="add">ADD</string>
+
+    <!--edittext hint names-->
+    <string name="name">Name</string>
+    <string name="mobileno">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="repassword">Re_type Password</string>
+    <string name="vendorname">Vendor Name</string>
+    <string name="utilityname">utility Name</string>
+    <string name="rate">Rate</string>
+    <string name="quantity">Quantity</string>
+    <string name="entries">Entries</string>
+
+
+    <string name="about">\"About Office Diary\"</string>
+    <string name="about_us">\t\t\t Office Porto: Presents small apps and software for small offices, to make operations simple and easy.</string>
+    <string name="about_us_details">Office Diary by Office Porto</string>
+
+    <string name="contact_us">Address : office No.15 1<sup>st</sup> floor City Vista, Kharadi, Pune
+    </string>
+    <string name="contact_us_details">Call : 9511617861</string>
+
+    <string name="contact_us_details2">E-mail: info@reichprinz.com \nWebsite: http://www.reichprinz.com</string>
+
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+</resources>

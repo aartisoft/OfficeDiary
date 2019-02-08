@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3f84b5</color>
+    <color name="colorPrimaryDark">#226497</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorwhit">#FFFFFF</color>
+
+    <color name="colorcardback">#ca3e1f</color>
+    <color name="colorblack">#000000</color>
+
+    <color name="spinnerpopup">#b390ec</color>
+
+    <color name="red">#d91010</color>
+    <color name="blue">#304797</color>
+    <color name="bluelight">#606fa6</color>
+    <color name="greenlight">#92ba82</color>
+
+    <color name="black">#000000</color>
+</resources>

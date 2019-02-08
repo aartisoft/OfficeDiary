@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    tools:context=".AboutUsFragment">
+
+    <ImageView
+        android:id="@+id/imageView9"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="13dp"
+        app:srcCompat="@drawable/officedialogo" />
+
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/about_us"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:layout_marginTop="15dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/imageView9"/>
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView22"
+        android:layout_marginTop="15dp"
+        android:text="@string/about_us_details"
+        android:textColor="@color/black"
+        android:textAlignment="textEnd"
+        android:textSize="19dp" />
+
+
+
+
+</RelativeLayout>

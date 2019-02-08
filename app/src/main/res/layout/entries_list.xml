@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textutname2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Utility : "
+        android:textColor="@android:color/black"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/textutname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/textutname2"
+        android:text="Heading "
+        android:textColor="@color/red"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/textvname2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textutname"
+        android:layout_marginStart="10dp"
+        android:text="Vendor : "
+        android:textColor="@android:color/black" />
+
+    <TextView
+        android:id="@+id/textvname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textutname"
+        android:layout_toEndOf="@+id/textvname2"
+        android:text="sub heading"
+        android:textColor="@color/red" />
+
+    <TextView
+        android:id="@+id/textquantity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textColor="@android:color/black"
+        android:text="Quantity : "
+        android:textSize="18dp"
+        android:layout_toStartOf="@+id/textquantity" />
+
+    <TextView
+        android:id="@+id/textquantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="10dp"
+        android:layout_alignParentTop="true"
+        android:textColor="@color/red"
+        android:text="TextView"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/texttime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textquantity"
+        android:textColor="@android:color/black"
+        android:layout_toStartOf="@+id/texttime"
+        android:text="Time : " />
+
+    <TextView
+        android:id="@+id/texttime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textquantity"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/red"
+        android:text="TextView" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/textutname2"
+        android:layout_below="@+id/textvname"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textDate2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textvname"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="Date : "
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/textDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/textvname"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="TextView"
+            android:textColor="@color/red" />
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/textutname2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Utility : "
+        android:layout_marginTop="1dp"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+
+    <TextView
+        android:id="@+id/textutname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/textutname2"
+        android:text="Heading "
+        android:textColor="@color/red"
+        android:textSize="20dp"
+        android:layout_marginEnd="60dp"/>
+
+    <TextView
+        android:id="@+id/textquantity2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textutname"
+        android:layout_marginStart="10dp"
+        android:text="Quantity : "
+        android:layout_marginTop="2dp"
+        android:textStyle="bold"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/textquantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textutname"
+        android:layout_marginStart="5dp"
+        android:layout_toEndOf="@+id/textquantity2"
+        android:text="TextView"
+        android:textColor="@color/red"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/texttime2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textutname"
+        android:layout_toEndOf="@+id/textquantity"
+        android:text="Time : "
+        android:textSize="17dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginStart="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/texttime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textutname"
+        android:layout_toEndOf="@+id/texttime2"
+        android:text="TextView"
+        android:layout_marginTop="2dp"
+        android:textColor="@color/red"
+        android:layout_toStartOf="@+id/imageVinfo"
+        android:textSize="17dp" />
+
+    <ImageView
+        android:id="@+id/imageVinfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="17dp"
+        app:srcCompat="@drawable/ic_action_info" />
+
+
+</RelativeLayout>

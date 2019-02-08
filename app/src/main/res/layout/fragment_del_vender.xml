@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="?attr/actionBarSize"
+    android:paddingRight="10dp"
+    android:paddingLeft="10dp"
+    tools:context=".DelVenderFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <!--<TextView
+        android:id="@+id/textviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/fragment_delven"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:textSize="22dp"
+        android:textColor="@color/colorwhit"
+        android:textStyle="bold"/>-->
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:dividerHeight="2dp"
+        android:divider="@color/colorblack"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/nodataimgs" />
+
+</RelativeLayout>
