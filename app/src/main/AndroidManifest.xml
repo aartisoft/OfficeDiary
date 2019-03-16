@@ -3,8 +3,10 @@
     package="com.OfficeDiaryport.admin.teaapps">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launchers"
         android:label="@string/app_name"
@@ -36,7 +38,8 @@
             android:theme="@style/AppTheme2">
 
         </activity>
-        <activity android:name=".UserRegistActivity" android:theme="@style/AppTheme2">
+        <activity android:name=".UserRegistActivity"
+            android:theme="@style/AppTheme2">
 
         </activity>
     </application>

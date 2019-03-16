@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,6 +42,8 @@ public class DelVenderFragment extends Fragment {
     ListView listView;
     ImageView imageView;
 
+    private AdView mAdView;
+
     ArrayList<VendorModel> vendorModels;
     private static CustomAdapter adapter;
     Context context;
@@ -49,8 +55,6 @@ public class DelVenderFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     public DelVenderFragment() {
         // Required empty public constructor
@@ -89,6 +93,8 @@ public class DelVenderFragment extends Fragment {
         listView=(ListView)view.findViewById(R.id.listview);
         imageView=(ImageView)view.findViewById(R.id.imageView2);
         imageView.setVisibility(View.GONE);
+
+        mAdView = (AdView) view.findViewById(R.id.adView);
 
         dialog = new ProgressDialog(context);
         dialog.setMessage("Loading....");
@@ -147,6 +153,8 @@ public class DelVenderFragment extends Fragment {
 
         RequestQueue rQueue = Volley.newRequestQueue(context);
         rQueue.add(request);
+
+        showadds();
         return view;
     }
 
@@ -156,32 +164,43 @@ public class DelVenderFragment extends Fragment {
         getActivity().setTitle(R.string.fragment_delven);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+    public void showadds(){
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            /*throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");*/
-        }
-    }
+        AdRequest adRequest = new AdRequest.Builder()
+                //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                // Check the LogCat to get your test device ID
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                .build();
+        //MediationTestSuite.setAdRequest(adRequest.build());
+        Log.d("onCreate: ", AdRequest.DEVICE_ID_EMULATOR);
+        //Toast.makeText(this, AdRequest.DEVICE_ID_EMULATOR, Toast.LENGTH_SHORT).show();
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+            }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+            @Override
+            public void onAdClosed() {
+                //Toast.makeText(context, "Ad is closed!", Toast.LENGTH_SHORT).show();
+            }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                //Toast.makeText(context, "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                //Toast.makeText(context, "Ad left application!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+        });
+
+        mAdView.loadAd(adRequest);
     }
 }

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     tools:context=".UserEntriesFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -13,7 +14,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="@string/entries"
-        android:textSize="20dp"
+        android:textSize="20sp"
         android:textColor="@color/colorblack"
         android:textStyle="bold" />
 
@@ -24,7 +25,8 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:dividerHeight="2dp"
-        android:divider="@color/colorblack"/>
+        android:divider="@color/colorblack"
+        android:layout_above="@+id/adView"/>
 
     <ImageView
         android:id="@+id/imageView2"
@@ -34,5 +36,15 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/nodataimgs"
         android:layout_below="@+id/textview" />
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        ads:adSize="SMART_BANNER"
+        ads:adUnitId="@string/banner_home_footer" />
+
 
 </RelativeLayout>

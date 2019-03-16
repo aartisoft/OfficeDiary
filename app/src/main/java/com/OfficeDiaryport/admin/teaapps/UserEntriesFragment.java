@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +21,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,7 +43,7 @@ public class UserEntriesFragment extends Fragment {
 
     ListView listView;
     ImageView imageView;
-
+    private AdView mAdView;
 
     ArrayList<EntriesModel> dataModels;
     private static EntriesUserAdapter adapter;
@@ -51,8 +55,6 @@ public class UserEntriesFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     public UserEntriesFragment() {
         // Required empty public constructor
@@ -88,6 +90,9 @@ public class UserEntriesFragment extends Fragment {
         imageView=(ImageView)view.findViewById(R.id.imageView2);
         imageView.setVisibility(View.GONE);
 
+        mAdView = (AdView) view.findViewById(R.id.adView);
+
+        showadds();
         serverData();
 
         return view;
@@ -159,24 +164,44 @@ public class UserEntriesFragment extends Fragment {
         rQueue.add(request2);
     }
 
+    public void showadds(){
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+        AdRequest adRequest = new AdRequest.Builder()
+                //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                // Check the LogCat to get your test device ID
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                .build();
+        //MediationTestSuite.setAdRequest(adRequest.build());
+        Log.d("onCreate: ", AdRequest.DEVICE_ID_EMULATOR);
+        //Toast.makeText(this, AdRequest.DEVICE_ID_EMULATOR, Toast.LENGTH_SHORT).show();
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+            }
+
+            @Override
+            public void onAdClosed() {
+                //Toast.makeText(context, "Ad is closed!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                //Toast.makeText(context, "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                //Toast.makeText(context, "Ad left application!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+        });
+
+        mAdView.loadAd(adRequest);
     }
 
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

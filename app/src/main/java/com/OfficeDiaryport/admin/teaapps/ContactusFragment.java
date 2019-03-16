@@ -5,9 +5,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 
 
 public class ContactusFragment extends Fragment {
@@ -20,7 +26,9 @@ public class ContactusFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
+    private AdView mAdView;
+    private InterstitialAd mInterstitialAd;
+    Context context;
 
     public ContactusFragment() {
         // Required empty public constructor
@@ -52,6 +60,12 @@ public class ContactusFragment extends Fragment {
         // Inflate the layout for this fragment
         View view=inflater.inflate(R.layout.fragment_contactus, container, false);
 
+        context=getActivity();
+        mAdView = (AdView) view.findViewById(R.id.adView);
+
+        showadds();
+
+        showinterecial();
 
         return view;
     }
@@ -62,33 +76,60 @@ public class ContactusFragment extends Fragment {
         getActivity().setTitle(R.string.fragment_contsctus);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
+    public void showadds(){
+
+        AdRequest adRequest = new AdRequest.Builder()
+                //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                // Check the LogCat to get your test device ID
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                .build();
+        //MediationTestSuite.setAdRequest(adRequest.build());
+        Log.d("onCreate: ", AdRequest.DEVICE_ID_EMULATOR);
+        //Toast.makeText(this, AdRequest.DEVICE_ID_EMULATOR, Toast.LENGTH_SHORT).show();
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+            }
+
+            @Override
+            public void onAdClosed() {
+                //Toast.makeText(context, "Ad is closed!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                //Toast.makeText(context, "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                //Toast.makeText(context, "Ad left application!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+        });
+
+        mAdView.loadAd(adRequest);
+    }
+
+    public void showinterecial(){
+        mInterstitialAd = new InterstitialAd(context);
+        mInterstitialAd.setAdUnitId(getString(R.string.interstitial_full_screen));
+        mInterstitialAd.loadAd(new AdRequest.Builder()
+                .addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                .build());
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            /*throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");*/
+    public void onStop() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
         }
+        super.onStop();
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
-
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
-    }
 }

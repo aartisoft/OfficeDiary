@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +28,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -47,6 +51,7 @@ public class EntriesFragment extends Fragment {
 
     ListView listView;
     ImageView imageView;
+    private AdView mAdView;
 
     ArrayList<EntriesModel> dataModels;
     private static EntriesAdapter adapter;
@@ -66,8 +71,6 @@ public class EntriesFragment extends Fragment {
 
     private String mParam1;
     private String mParam2;
-
-    private OnFragmentInteractionListener mListener;
 
     public EntriesFragment() {
         // Required empty public constructor
@@ -104,6 +107,8 @@ public class EntriesFragment extends Fragment {
         imageView=(ImageView)view.findViewById(R.id.imageView2);
         imageView.setVisibility(View.GONE);
 
+        mAdView = (AdView) view.findViewById(R.id.adView);
+
         textqtot=(TextView)view.findViewById(R.id.texttotal);
         textamt=(TextView)view.findViewById(R.id.textView8);
         month_spinner=(Spinner)view.findViewById(R.id.spinner4);
@@ -130,6 +135,8 @@ public class EntriesFragment extends Fragment {
             }
         });
 
+        showadds();
+
         return view;
     }
 
@@ -142,7 +149,7 @@ public class EntriesFragment extends Fragment {
             public void onResponse(String string) {
                 dialog.dismiss();
                 dataModels= new ArrayList<>();
-
+                DataClass.datafio.clear();
                 //Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
                 try {
                     JSONArray fruitsArray =  new  JSONArray(string);
@@ -168,7 +175,7 @@ public class EntriesFragment extends Fragment {
                     adapter = new EntriesAdapter(dataModels, context);
                     listView.setAdapter(adapter);
                     imageView.setVisibility(View.GONE);
-                    sortSpin(String.valueOf(calendar.get(Calendar.MONTH) + 1));
+                    sortSpin(twodigitNumber(calendar.get(Calendar.MONTH) + 1));
                 }else {
                     imageView.setVisibility(View.VISIBLE);
                 }
@@ -239,34 +246,57 @@ public class EntriesFragment extends Fragment {
         getActivity().setTitle(R.string.fragment_entries);
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+    public String twodigitNumber(int minute){
+        String strminute="";
+        if (minute==0)
+        {
+            strminute="00";
+        }else if (minute<10){
+            strminute="0"+minute;
+        }else {
+            strminute=""+minute;
         }
+        return strminute;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            /*throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");*/
-        }
-    }
+    public void showadds(){
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
+        AdRequest adRequest = new AdRequest.Builder()
+                //.addTestDevice(AdRequest.DEVICE_ID_EMULATOR)
+                // Check the LogCat to get your test device ID
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                //.addTestDevice("B3EEABB8EE11C2BE770B684D95219ECB")
+                .build();
+        //MediationTestSuite.setAdRequest(adRequest.build());
+        Log.d("onCreate: ", AdRequest.DEVICE_ID_EMULATOR);
+        //Toast.makeText(this, AdRequest.DEVICE_ID_EMULATOR, Toast.LENGTH_SHORT).show();
+        mAdView.setAdListener(new AdListener() {
+            @Override
+            public void onAdLoaded() {
+            }
 
+            @Override
+            public void onAdClosed() {
+                //Toast.makeText(context, "Ad is closed!", Toast.LENGTH_SHORT).show();
+            }
 
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+            @Override
+            public void onAdFailedToLoad(int errorCode) {
+                //Toast.makeText(context, "Ad failed to load! error code: " + errorCode, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdLeftApplication() {
+                //Toast.makeText(context, "Ad left application!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAdOpened() {
+                super.onAdOpened();
+            }
+        });
+
+        mAdView.loadAd(adRequest);
     }
 
 }
